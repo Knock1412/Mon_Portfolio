@@ -1,0 +1,39 @@
+.githubButton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #24292e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .githubButton:hover {
+    background-color: #0366d6;
+  }
+
+  .title {
+    font-size: 28px;  /* ✅ Taille uniforme du titre principal */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .projectTitle {
+    font-size: 22px;  /* ✅ Taille des titres des projets */
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+
+  .projectCard {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px; /* 🔥 Ajoute un espace entre les projets */
+  }
+  
+  
