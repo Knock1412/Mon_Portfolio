@@ -1,56 +1,104 @@
+"use client";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section");
+      let currentSection = null;
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+          currentSection = section;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Bienvenue sur mon Portfolio</h1>
-      <p className={styles.subtitle}>
-        Étudiant informatique passionné par la création de logiciels et d'applications.
-      </p>
+      <p className={styles.subtitle}>Étudiant informatique passionné par la création de logiciels et d'applications.</p>
+
+      
 
       <div className={styles.sections}>
         {/* Formation */}
-        <section className={styles.section}>
-          <h2>🎓 Formations </h2><br />
+        <motion.section 
+          className={`${styles.section} ${activeSection?.id === "formations" ? styles.activeSection : ""}`} 
+          id="formations"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2>🎓 Formations</h2><br />
           <ul className={styles.listeSansPoint}>
-            <li><strong>3ème Année Licence Informatique (ISEI)</strong> - Université Paris8 (2024-2025)</li><br />
-            <li><strong>BUT GEII (Génie électrique et informatique industrielle)</strong> - L'IUT CERGY-PARIS (2022 - 2024)</li>
+            <li><strong>Licence Informatique</strong> - ISEI (2023 - 2026)</li><br />
+            <li><strong>Baccalauréat Scientifique</strong> - Lycée XYZ (2020 - 2023)</li>
           </ul>
-        </section>
+        </motion.section>
+
+        
 
         {/* Compétences */}
-        <section className={styles.section}>
+        <motion.section 
+          className={`${styles.section} ${activeSection?.id === "competences" ? styles.activeSection : ""}`} 
+          id="competences"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2>💡 Compétences</h2><br />
           <ul className={`${styles.skills} ${styles.listeSansPoint}`}>
-            <li>Next.js / React</li>
-            <li>JavaScript / TypeScript</li>
-            <li>Python / C++</li>
-            <li>Développement Mobile (Kotlin, Jetpack Compose)</li>
+            <li>Next.js / Vercel</li>
+            <li>Python </li>
+            <li>C / C++</li>
+            <li>Développement Mobile (Kotlin, LibGDX)</li>
             <li>Git / GitHub</li>
+            <li>PhP / MySQL</li>
           </ul>
-        </section>
+        </motion.section>
+
+        
 
         {/* Expériences */}
-        <section className={styles.section}>
+        <motion.section 
+          className={`${styles.section} ${activeSection?.id === "experiences" ? styles.activeSection : ""}`} 
+          id="experiences"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2>💼 Expériences Professionnelles</h2><br />
           <ul className={styles.listeSansPoint}>
-            <li><strong>Développeur Web</strong> - Stage chez XYZ (Été 2024)</li><br />
-            <li><strong>Projet Android</strong> - Jeu mobile avec Jetpack Compose</li><br />
-            <li><strong>Projet Arduino</strong> - Capteur ultrason avec MySQL & JpGraph</li>
+            <li><strong>Maintenance informatique</strong> - Stage chez Atelier du Mac (Avril.2024 - Juin.2024 )</li><br />
+            <li><strong>Ouvrier Qualifié</strong> - chez Société LA BIENVENUE (Juil.2023 - Août.2023)</li>
           </ul>
-        </section>
+        </motion.section>
       </div>
 
+
+      {/* 🔥 Boutons */}
       <div className={styles.buttons}>
         <a href="/CV-LIMACHE Adrien.pdf" download>
           <button className={styles.button}>📄 Télécharger mon CV</button>
         </a>
         <Link href="/projets">
-          <button className={styles.button}>Voir mes projets 📁</button>
+          <button className={styles.button}>📁 Voir mes projets</button>
         </Link>
         <Link href="/contact">
-          <button className={styles.button}>Me contacter 📞</button>
+          <button className={styles.button}>📞 Me contacter</button>
         </Link>
       </div>
     </div>
