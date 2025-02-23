@@ -1,0 +1,42 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.main {
+  max-width: 600px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #0070f3;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.cvButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.link {
+  display: block;
+  margin-top: 10px;
+  color: #0070f3;
+  text-decoration: none;
+}
