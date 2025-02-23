@@ -1,42 +1,78 @@
-.page {
+
+
+.container {
+  min-height: 160vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   text-align: center;
 }
 
-.main {
-  max-width: 600px;
-}
-
 .title {
-  font-size: 2rem;
-  color: #0070f3;
-}
-
-.description {
-  font-size: 1.2rem;
+  font-size: 3rem;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-.cvButton {
-  display: inline-block;
+.subtitle {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.button {
   padding: 10px 20px;
-  background-color: #0070f3;
+  background-color: #1b5494;
   color: white;
-  text-decoration: none;
+  border: none;
   border-radius: 5px;
-  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.links {
-  margin-top: 20px;
+.button:hover {
+  background-color: #0056b3;
 }
 
-.link {
-  display: block;
-  margin-top: 10px;
-  color: #0070f3;
-  text-decoration: none;
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.section {
+  background: #000000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.listeSansPoint {
+  list-style: none; /* Supprime les puces */
+  padding: 0;
+  margin: 0;
+  
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  
+}
+
+.skills li {
+  background: #007bff;
+  color: rgb(255, 249, 249);
+  padding: 8px 12px;
+  border-radius: 5px;
 }
