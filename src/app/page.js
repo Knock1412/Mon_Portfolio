@@ -8,6 +8,22 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
+    // Appliquer l'arrière-plan global au body
+    document.body.style.background = "linear-gradient(135deg, #1f1c2c, #928dab)";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.margin = "0";
+    document.body.style.padding = "0";
+
+    return () => {
+      // Nettoyer le style quand on quitte la page
+      document.body.style.background = "";
+      document.body.style.backgroundSize = "";
+      document.body.style.backgroundAttachment = "";
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section");
       let currentSection = null;
@@ -31,8 +47,6 @@ export default function Home() {
       <h1 className={styles.title}>Bienvenue sur mon Portfolio</h1>
       <p className={styles.subtitle}>Étudiant informatique passionné par la création de logiciels et d'applications.</p>
 
-      
-
       <div className={styles.sections}>
         {/* Formation */}
         <motion.section 
@@ -48,8 +62,6 @@ export default function Home() {
             <li><strong>Baccalauréat Scientifique</strong> - Lycée XYZ (2020 - 2023)</li>
           </ul>
         </motion.section>
-
-        
 
         {/* Compétences */}
         <motion.section 
@@ -70,8 +82,6 @@ export default function Home() {
           </ul>
         </motion.section>
 
-        
-
         {/* Expériences */}
         <motion.section 
           className={`${styles.section} ${activeSection?.id === "experiences" ? styles.activeSection : ""}`} 
@@ -87,7 +97,6 @@ export default function Home() {
           </ul>
         </motion.section>
       </div>
-
 
       {/* 🔥 Boutons */}
       <div className={styles.buttons}>
