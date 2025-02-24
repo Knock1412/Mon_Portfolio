@@ -1,39 +1,56 @@
-.githubButton {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #24292e;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .githubButton:hover {
-    background-color: #0366d6;
-  }
+.container {
+  text-align: center;
+  padding: 50px;
+  color: white;
+}
 
-  .title {
-    font-size: 28px;  /* ✅ Taille uniforme du titre principal */
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .projectTitle {
-    font-size: 22px;  /* ✅ Taille des titres des projets */
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
 
-  .projectCard {
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px; /* 🔥 Ajoute un espace entre les projets */
-  }
-  
-  
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.projectCard {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.projectCard:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+}
+
+.blurred {
+  filter: blur(5px);
+  opacity: 0.5;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

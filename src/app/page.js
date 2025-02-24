@@ -113,13 +113,13 @@ export default function Home() {
         </motion.section>
       </div>
 
-      {/* 🔥 Boutons */}
+      
       <div className={styles.buttons}>
         <a href="/CV-LIMACHE Adrien.pdf" download>
           <button className={styles.button}>📄 Télécharger mon CV</button>
         </a>
         <Link href="/projets">
-          <button className={styles.button}>📁 Voir mes projets</button>
+          <button className={styles.button}>🚀 Voir mes projets</button>
         </Link>
         <Link href="/contact">
           <button className={styles.button}>📞 Me contacter</button>
