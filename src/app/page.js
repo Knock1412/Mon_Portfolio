@@ -56,7 +56,18 @@ export default function Home() {
     <div className={styles.container}>
       <motion.div
         className={styles.parallax}
-        style={{y}}
+        style=
+        {{      y,
+          background: "linear-gradient(135deg, #1f1c2c, #928dab)",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+          width: "100%",
+          height: "100vh",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: -1,
+        }}
       />
       <h1 className={styles.title}>Bienvenue sur mon Portfolio</h1>
       <p className={styles.subtitle}>Étudiant informatique passionné par la création de logiciels et d'applications.</p>
