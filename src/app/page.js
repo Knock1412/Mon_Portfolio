@@ -2,11 +2,13 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
   const [hoveredSection, setHoveredSection] = useState(null);
+  const {scrollY} = useScroll();
+  const y = useTransform(scrollY, [0,300], [0, -100]);
 
   useEffect(() => {
     document.body.style.background = "linear-gradient(135deg, #1f1c2c, #928dab)";
@@ -41,8 +43,21 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const skills = [
+    "Next.js / Vercel",
+    "Python",
+    "C / C++",
+    "Développement Mobile (Kotlin, LibGDX)",
+    "Git / GitHub",
+    "PhP / MySQL"
+  ];
+
   return (
     <div className={styles.container}>
+      <motion.div
+        className={styles.parallax}
+        style={{y}}
+      />
       <h1 className={styles.title}>Bienvenue sur mon Portfolio</h1>
       <p className={styles.subtitle}>Étudiant informatique passionné par la création de logiciels et d'applications.</p>
 
@@ -51,18 +66,15 @@ export default function Home() {
         <motion.section 
           className={`${styles.section} ${activeSection?.id === "formations" ? styles.activeSection : ""}`} 
           id="formations"
-          initial={{ opacity: 0.8, scale: 1 }}
-          animate={{
-            opacity: hoveredSection && hoveredSection !== "formations" ? 0.5 : 1,
-            scale: hoveredSection === "formations" ? 1.1 : 1
-          }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           onMouseEnter={() => setHoveredSection("formations")}
           onMouseLeave={() => setHoveredSection(null)}
         >
           <h2>🎓 Formations</h2><br />
           <ul className={styles.listeSansPoint}>
-            <li><strong>3ème Année de Licence Informatique(ISEI)</strong> - Univeersité Paris8 (2024 - 2025)</li><br />
+            <li><strong>3ème Année de Licence Informatique(ISEI)</strong> - Université Paris8 (2024 - 2025)</li><br />
             <li><strong>BUT GEII (Génie électrique et informatique industrielle)</strong> - L'IUT CERGY-PARIS (2022 - 2024)</li><br />
             <li><strong>Licence Droit</strong> - Université Paris-Saclay (2020 - 2022)</li>
           </ul>
@@ -72,23 +84,24 @@ export default function Home() {
         <motion.section 
           className={`${styles.section} ${activeSection?.id === "competences" ? styles.activeSection : ""}`} 
           id="competences"
-          initial={{ opacity: 0.8, scale: 1 }}
-          animate={{
-            opacity: hoveredSection && hoveredSection !== "competences" ? 0.5 : 1,
-            scale: hoveredSection === "competences" ? 1.1 : 1
-          }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           onMouseEnter={() => setHoveredSection("competences")}
           onMouseLeave={() => setHoveredSection(null)}
         >
           <h2>💡 Compétences</h2><br />
           <ul className={`${styles.skills} ${styles.listeSansPoint}`}>
-            <li>Next.js / Vercel</li>
-            <li>Python </li>
-            <li>C / C++</li>
-            <li>Développement Mobile (Kotlin, LibGDX)</li>
-            <li>Git / GitHub</li>
-            <li>PhP / MySQL</li>
+            {skills.map((skill, index) => (
+              <motion.li 
+                key={index} 
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: index * 0.1 }}
+              >
+                {skill}
+              </motion.li>
+            ))}
           </ul>
         </motion.section>
 
@@ -96,12 +109,9 @@ export default function Home() {
         <motion.section 
           className={`${styles.section} ${activeSection?.id === "experiences" ? styles.activeSection : ""}`} 
           id="experiences"
-          initial={{ opacity: 0.8, scale: 1 }}
-          animate={{
-            opacity: hoveredSection && hoveredSection !== "experiences" ? 0.5 : 1,
-            scale: hoveredSection === "experiences" ? 1.1 : 1
-          }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           onMouseEnter={() => setHoveredSection("experiences")}
           onMouseLeave={() => setHoveredSection(null)}
         >
@@ -113,16 +123,21 @@ export default function Home() {
         </motion.section>
       </div>
 
-      
       <div className={styles.buttons}>
         <a href="/CV-LIMACHE Adrien.pdf" download>
-          <button className={styles.button}>📄 Télécharger mon CV</button>
+          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className={styles.button}>
+            📄 Télécharger mon CV
+          </motion.button>
         </a>
         <Link href="/projets">
-          <button className={styles.button}>🚀 Voir mes projets</button>
+          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className={styles.button}>
+            🚀 Voir mes projets
+          </motion.button>
         </Link>
         <Link href="/contact">
-          <button className={styles.button}>📞 Me contacter</button>
+          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className={styles.button}>
+            📞 Me contacter
+          </motion.button>
         </Link>
       </div>
     </div>
